@@ -3,5 +3,4 @@
 
 site 'http://community.opscode.com/api/v1'
 
-cookbook "rails",
-  :git => "git@github.com:articlemetrics/rails-cookbook.git"
+cookbook "rails", :path => "."
