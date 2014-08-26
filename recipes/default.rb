@@ -22,8 +22,8 @@ end
 # create shared folders using capistrano layout and set permissions
 %w{ current shared/config shared/log shared/pids shared/system releases }.each do |dir|
   directory "/var/www/#{node['rails']['name']}/#{dir}" do
-    owner node['rails']['user']
-    group node['rails']['group']
+    owner node['nginx']['user']
+    group node['nginx']['group']
     mode 0755
     recursive true
     action :create
@@ -49,8 +49,8 @@ end
 
 template "/var/www/#{node['rails']['name']}/shared/config/database.yml" do
   source 'database.yml.erb'
-  owner node['rails']['user']
-  group node['rails']['group']
+  owner node['nginx']['user']
+  group node['nginx']['group']
   mode 0644
 end
 
@@ -66,3 +66,6 @@ mysql_database node['rails']['name'] + "_" + node['rails']['environment'] do
   )
   action :create
 end
+
+# install nginx with passenger
+include_recipe "nginx::default"
