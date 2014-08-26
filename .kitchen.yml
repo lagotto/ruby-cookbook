@@ -5,7 +5,7 @@ driver:
 provisioner:
   name: chef_solo
   solo_rb:
-  ssl_verify_mode: verify_peer
+    ssl_verify_mode: verify_peer
 
 platforms:
   - name: ubuntu-14.04
