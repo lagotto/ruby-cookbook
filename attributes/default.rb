@@ -5,6 +5,7 @@ default['mysql']['remove_anonymous_users'] = true
 default['mysql']['remove_test_database'] = true
 
 default['nginx']['user'] = 'www-data'
+default['nginx']['group'] = 'www-data'
 default['nginx']['dir'] = '/etc/nginx'
 default['nginx']['log_dir'] = '/var/log/nginx'
 default['nginx']['worker_processes'] = 4

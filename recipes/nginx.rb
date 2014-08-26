@@ -30,8 +30,8 @@ template 'nginx.conf' do
   notifies :reload, 'service[nginx]'
 end
 
-# configuration for web app
-# we use the conf.d folder rather than the sites-available folder
+# web app configuration
+# as we manage this via Chef, we use the conf.d folder rather than the sites-available folder
 template 'web_app.conf' do
   path   "#{node['nginx']['dir']}/conf.d/#{node['rails']['name']}.conf"
   source 'web_app.conf.erb'
