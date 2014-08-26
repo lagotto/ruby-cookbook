@@ -1,6 +1,11 @@
-default['rails']['name'] = File.dirname(__FILE__)
+default['rails']['name'] = "app"
 default['rails']['environment'] = 'development'
 
-default['nginx']['user'] = 'vagrant'
-default['nginx']['group'] = 'vagrant'
-default['nginx']['passenger']['version'] = "4.0.49"
+default['mysql']['remove_anonymous_users'] = true
+default['mysql']['remove_test_database'] = true
+
+default['nginx']['user'] = 'www-data'
+default['nginx']['dir'] = '/etc/nginx'
+default['nginx']['log_dir'] = '/var/log/nginx'
+default['nginx']['worker_processes'] = 4
+default['nginx']['worker_connections'] = 768
