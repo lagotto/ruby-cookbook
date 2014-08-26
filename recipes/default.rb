@@ -18,3 +18,13 @@ end
 gem_package "bundler" do
   gem_binary "/usr/bin/gem"
 end
+
+# create shared folders using capistrano layout and set permissions
+%w{ current shared config releases }.each do |dir|
+  directory "/var/www/#{node['rails']['name']}/#{dir}" do
+    owner node['rails']['user']
+    group node['rails']['group']
+    mode 0755
+    recursive true
+  end
+end
