@@ -3,4 +3,4 @@
 
 site 'https://supermarket.getchef.com/api/v1'
 
-cookbook "rails", :path => "../rails-cookbook"
+cookbook "ruby", :path => "../ruby-cookbook"

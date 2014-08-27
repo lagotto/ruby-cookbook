@@ -1,7 +1,0 @@
-server {
-  listen 80;
-  server_name <%= node['hostname'] %>;
-  root /var/www/<%= node['rails']['name'] %>/current/public;
-  access_log <%= node['nginx']['log_dir'] %>/<%= node['rails']['name'] %>.access.log;
-  passenger_enabled on;
-}
