@@ -1,4 +1,4 @@
-ruby Cookbook
+Ruby Cookbook
 ==============
 Installs Ruby using the Brightbox Ruby PPA.
 
@@ -21,13 +21,13 @@ Opscode cookbooks:
 
 Attributes
 ----------
-* `node['ruby']['version']` - Can be **ruby1.9.1**, **ruby2.0** or **ruby2.1**, Defaults to `ruby2.1`. `ruby1.9.1` is Ruby 1.9.3.
+* `node['ruby']['version']` - Can be `ruby1.9.1`, `ruby2.0` or `ruby2.1`, Defaults to `ruby2.1`. `ruby1.9.1` is Ruby 1.9.3.
 
 
 Recipes
 -------
 ### default
-Installs Ruby from the [Brightbox Ruby PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng). Also installs the `bundler` gem, and libraries required by the `nokogiri` gem (libxml2-dev libxslt-dev).
+Installs Ruby from the [Brightbox Ruby PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng). Also installs the `bundler` gem, and the `libxml2-dev` and `libxslt-dev` libraries required by the `nokogiri` gem.
 
 
 License & Authors
