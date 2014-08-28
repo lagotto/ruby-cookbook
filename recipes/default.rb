@@ -17,7 +17,7 @@ apt_repository 'brightbox-ruby-ng' do
   key          'C3173AA6'
 end
 
-%W{ libxml2-dev libxslt-dev #{node['ruby']['version']} #{node['ruby']['version']}-dev curl }.each do |pkg|
+%W{ libxml2-dev libxslt-dev libmysqlclient-dev nodejs #{node['ruby']['version']} #{node['ruby']['version']}-dev curl }.each do |pkg|
   package pkg do
     action :install
   end

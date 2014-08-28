@@ -27,7 +27,7 @@ Attributes
 Recipes
 -------
 ### default
-Installs Ruby from the [Brightbox Ruby PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng). Also installs the `bundler` gem, and the `libxml2-dev` and `libxslt-dev` libraries required by the `nokogiri` gem.
+Installs Ruby from the [Brightbox Ruby PPA](https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng). Also installs the `bundler` gem, the `libxml2-dev` and `libxslt-dev` libraries required by the `nokogiri` gem, the `libmysqlclient-dev` library required by the `myslq2` gem, and `nodejs` as Javascript runtime.
 
 
 License & Authors
