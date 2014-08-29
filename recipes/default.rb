@@ -3,6 +3,7 @@ include_recipe 'apt'
 
 # include essential tools
 include_recipe 'build-essential'
+include_recipe 'git'
 
 case node['platform_version'].to_f
 when 12.04 then distro = 'precise'
