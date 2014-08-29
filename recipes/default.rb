@@ -1,6 +1,7 @@
 # run apt-get update
 include_recipe 'apt'
 
+# include essential tools
 include_recipe 'build-essential'
 
 case node['platform_version'].to_f
@@ -17,6 +18,7 @@ apt_repository 'brightbox-ruby-ng' do
   key          'C3173AA6'
 end
 
+# install libraries required by Ruby gems
 %W{ libxml2-dev libxslt-dev libmysqlclient-dev nodejs #{node['ruby']['version']} #{node['ruby']['version']}-dev curl }.each do |pkg|
   package pkg do
     action :install
