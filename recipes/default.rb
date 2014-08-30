@@ -1,32 +1,36 @@
-# run apt-get update
-include_recipe 'apt'
+include_recipe "apt"
 
-# include essential tools
-include_recipe 'build-essential'
-include_recipe 'git'
-
-case node['platform_version'].to_f
-when 12.04 then distro = 'precise'
-when 14.04 then distro = 'trusty'
+apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
+  uri          "http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu"
+  distribution node['lsb']['codename']
+  components   ["main"]
+  keyserver    "keyserver.ubuntu.com"
+  key          "C3173AA6"
+  action       :add
+  notifies     :run, "execute[apt-get update]", :immediately
 end
 
-# add PPA for Ruby 2.x
-apt_repository 'brightbox-ruby-ng' do
-  uri          'http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu'
-  distribution distro
-  components   ['main']
-  keyserver    'keyserver.ubuntu.com'
-  key          'C3173AA6'
+# install Ruby
+package "ruby#{node['ruby']['version']}" do
+  action :install
+end
+
+package "ruby#{node['ruby']['version']}-dev" do
+  only_if { node['ruby']['install_dev_package'] }
+  action :install
 end
 
 # install libraries required by Ruby gems
-%W{ libxml2-dev libxslt-dev libmysqlclient-dev nodejs #{node['ruby']['version']} #{node['ruby']['version']}-dev curl }.each do |pkg|
+node['ruby']['packages'].each do |pkg|
   package pkg do
     action :install
   end
 end
 
-# install bundler, using the freshly installed Ruby
-gem_package "bundler" do
-  gem_binary "/usr/bin/gem"
+# install system gems, using the freshly installed Ruby
+node['ruby']['gems'].each do |gem|
+  gem_package gem do
+    gem_binary "/usr/bin/gem"
+    action :install
+  end
 end
