@@ -1,5 +1,9 @@
 include_recipe "apt"
 
+execute "apt-get update" do
+  action :nothing
+end
+
 apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
   uri          "http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu"
   distribution node['lsb']['codename']
