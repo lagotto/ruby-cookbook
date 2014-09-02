@@ -1,5 +1,9 @@
 include_recipe "apt"
 
+execute "apt-get update" do
+  action :nothing
+end
+
 apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
   uri          "http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu"
   distribution node['lsb']['codename']
@@ -7,7 +11,7 @@ apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
   keyserver    "keyserver.ubuntu.com"
   key          "C3173AA6"
   action       :add
-  notifies     :run, "execute[apt-get-update]", :immediately
+  notifies     :run, "execute[apt-get update]", :immediately
 end
 
 # install Ruby
