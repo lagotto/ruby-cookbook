@@ -7,7 +7,7 @@ apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
   keyserver    "keyserver.ubuntu.com"
   key          "C3173AA6"
   action       :add
-  notifies     :run, "execute[apt-get update]", :immediately
+  notifies     :run, "execute[apt-get-update]", :immediately
 end
 
 # install Ruby
