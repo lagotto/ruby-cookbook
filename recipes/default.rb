@@ -14,6 +14,16 @@ apt_repository "brightbox-ruby-ng-#{node['lsb']['codename']}" do
   notifies     :run, "execute[apt-get update]", :immediately
 end
 
+# add PPA for nodejs
+package "curl" do
+  action :install
+end
+
+execute "install nodejs" do
+  command "curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash"
+  creates "/usr/bin/nodejs"
+end
+
 # install Ruby
 package "ruby#{node['ruby']['version']}" do
   action :install
