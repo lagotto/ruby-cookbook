@@ -1,7 +1,6 @@
 require 'serverspec'
 
-include SpecInfra::Helper::Exec
-include SpecInfra::Helper::DetectOS
+set :backend, :ssh
 
 RSpec.configure do |c|
   c.before :all do
